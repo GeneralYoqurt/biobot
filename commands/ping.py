@@ -1,6 +1,6 @@
 import lightbulb
 
-plugin = lightbulb.Plugin('Developer Commands')
+plugin = lightbulb.Plugin('Ping Command')
 
 @plugin.command
 @lightbulb.add_checks(lightbulb.owner_only)
