@@ -25,9 +25,6 @@ async def thx(ctx):
     # Odpowiedz, że udało się wysłać podziękowanie
     await thx_embeds.send_success_respond(ctx, option_user)
 
-    # TODO: Zrobić w 'controllers' mechanikę uzyskiwania z ustawień z bazy danych ustawionych kanałów do określonych funkcji
-    # * Czyli najpierw poradnik SQL
-
     # TODO: Zrobić embed do logu moderacji
     # TODO: Zrobić embed do rozpatrzenia jako respond
     

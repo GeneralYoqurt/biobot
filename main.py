@@ -1,15 +1,10 @@
 import hikari
 import lightbulb
-from dotenv import load_dotenv
+from utils import load_dotenv
 import os
 
-# Sprawdź, który plik .env istnieje i załaduj go
-if os.path.exists('.env.dev'):
-    load_dotenv('.env.dev')
-elif os.path.exists('.env.prod'):
-    load_dotenv('.env.prod')
-else:
-    raise FileNotFoundError('Brak pliku .env.dev lub .env.prod')
+# Załaduj plik env
+load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
