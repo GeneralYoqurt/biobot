@@ -3,16 +3,17 @@ import pyodbc
 
 async def channel(ctx, channel_function):
     try:
-        # Stwórz połączenie
+        # Stwórz połączenie.
         db = Database()
-        # Pobierz kursor z utworzonego połączenia
+        # Pobierz kursor z utworzonego połączenia.
         cursor = db.get_cursor()
 
         cursor.execute(f'SELECT channel_id FROM {ctx.guild_id}_CONFIG_CHANNELS WHERE function = ?', (channel_function))
         result = cursor.fetchone()
 
-        if not result[0]:
-            print(f'Kanał o funkcji {channel_function} nie został ustawiony')
+        # Jeżeli nie znaleziono w DB kanału o tej funkcji albo jeżeli nie znaleziono id przy kanale z daną funkcją.
+        if not result or not result[0]:
+            print(f'Kanał o funkcji "{channel_function}" nie został ustawiony')
             return
 
         channel_id = result[0]

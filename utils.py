@@ -1,7 +1,7 @@
 from dotenv import load_dotenv as load
 import os
 
-# Sprawdź, który plik .env istnieje i załaduj go
+# Sprawdź, który plik ".env" istnieje i załaduj go.
 def load_dotenv():
         if os.path.exists('.env.dev'):
             print('Aplikacja działa na zmiennych DEV')
@@ -19,10 +19,10 @@ class Database:
     def __init__(self):
         
         
-        # Wczytaj zmienne środowiskowe z pliku .env.(konfiguracja)
+        # Wczytaj zmienne środowiskowe z pliku .env.(konfiguracja).
         load_dotenv()
 
-        # Uzyskaj wartości zmiennych
+        # Uzyskaj wartości zmiennych.
         driver = os.getenv('DRIVER')
         server = os.getenv('SERVER')
         database = os.getenv('DATABASE')
@@ -30,7 +30,7 @@ class Database:
         password = os.getenv('PASSWORD')
         port = os.getenv('PORT')
 
-        # Connection string
+        # Connection string.
         conn_str = (
             f"DRIVER={{{driver}}};"
             f"SERVER={server};"
@@ -43,22 +43,22 @@ class Database:
         self.connection = None
         self.cursor = None
 
-        # Ponów próbę połączenia określoną liczbę razy
+        # Ponów próbę połączenia określoną liczbę razy.
         retries = 2
         attempt = 0
         while attempt < retries:
             try:
-                # Stwórz połączenie z bazą SQL
+                # Stwórz połączenie z bazą SQL.
                 self.connection = pyodbc.connect(conn_str)
                 self.cursor = self.connection.cursor()
                 print("Connection successful.")
-                break  # Przerwij pętlę jeśli połączenie się udało
+                break  # Przerwij pętlę jeśli połączenie się udało.
 
             except pyodbc.Error as e:
                 print(f"Error occurred: {e}")
                 attempt += 1
                 print(f"Retrying {attempt}/{retries}...")
-                time.sleep(1)  # Opóźnienie przed ponowną próbą
+                time.sleep(1)  # Opóźnienie przed ponowną próbą.
 
         if not self.connection or not self.cursor:
             print("Operation failed after multiple attempts.")

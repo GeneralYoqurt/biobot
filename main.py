@@ -3,7 +3,7 @@ import lightbulb
 from utils import load_dotenv
 import os
 
-# Załaduj plik env
+# Załaduj plik env.
 load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
