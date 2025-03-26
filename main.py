@@ -6,8 +6,7 @@ from controllers.youtube_watch import youtube_listener
 
 bot = lightbulb.BotApp(
     token=DISCORD_BOT_TOKEN,
-    intents=hikari.Intents.ALL_UNPRIVILEGED | hikari.Intents.MESSAGE_CONTENT,
-    default_enabled_guilds=(1166065898369589258,)
+    intents=hikari.Intents.ALL_UNPRIVILEGED | hikari.Intents.MESSAGE_CONTENT
 )
 
 bot.load_extensions_from('./commands')
