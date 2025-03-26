@@ -1,15 +1,19 @@
+import asyncio
 import hikari
 import lightbulb
-from utils import load_dotenv
-import os
+from config import DISCORD_BOT_TOKEN
+from controllers.youtube_watch import youtube_listener
 
-# Załaduj plik env.
-load_dotenv()
-
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-
-bot = lightbulb.BotApp(token = BOT_TOKEN, intents = hikari.Intents.ALL_UNPRIVILEGED | hikari.Intents.MESSAGE_CONTENT, default_enabled_guilds = (1166065898369589258))
+bot = lightbulb.BotApp(
+    token=DISCORD_BOT_TOKEN,
+    intents=hikari.Intents.ALL_UNPRIVILEGED | hikari.Intents.MESSAGE_CONTENT,
+    default_enabled_guilds=(1166065898369589258,)
+)
 
 bot.load_extensions_from('./commands')
+
+@bot.listen(hikari.StartedEvent)
+async def on_started(event):
+    asyncio.create_task(youtube_listener(bot))
 
 bot.run()

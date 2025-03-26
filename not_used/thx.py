@@ -1,6 +1,6 @@
 import hikari
 import lightbulb
-from views import thx_embeds
+from not_used import thx_embeds
 
 plugin = lightbulb.Plugin('Thanks Command')
 
