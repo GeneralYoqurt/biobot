@@ -1,12 +1,10 @@
 import lightbulb
 
-plugin = lightbulb.Plugin('Developer Commands')
+plugin = lightbulb.Plugin('Ping Command')
 
 @plugin.command
+@lightbulb.add_checks(lightbulb.owner_only)
 @lightbulb.command('ping', 'Says pong!')
-@lightbulb.checks.owner_only
-@lightbulb.checks.guild_only
-@lightbulb.checks.human_only
 @lightbulb.implements(lightbulb.SlashCommand)
 
 async def ping(ctx):
