@@ -33,14 +33,13 @@ def write_last_video(video_id):
         f.write(video_id)
 
 async def youtube_listener(bot):
-    
+    last_video = read_last_video()
     while True:
         try:
-            last_video = read_last_video()
             video_id = await fetch_latest_video_id()
             if video_id and video_id != last_video:
                 last_video = video_id
-                write_last_video(video_id)
+                write_last_video(last_video)
                 message = f"<@&{ROLE_ID_PING_NEW_VIDEO}> **na kanale Ani!\nhttps://www.youtube.com/watch?v={video_id}**"
                 if YOUTUBE_NOTIFY_CHANNEL_ID:
                     await bot.rest.create_message(int(YOUTUBE_NOTIFY_CHANNEL_ID), message)
