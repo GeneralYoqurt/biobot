@@ -1,2 +1,2 @@
 # biobot
-Discord bot for community "aniodbiologii"
+Bot dla społeczności "aniodbiologii"
