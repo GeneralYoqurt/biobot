@@ -1,13 +1,15 @@
 import hikari
 import lightbulb
-from config import DISCORD_BOT_TOKEN
+from config import DISCORD_BOT_TOKEN, DEFAULT_ENABLED_GUILD_ID
 from controllers.youtube_watch import youtube_listener
 from async_tasks import AsyncTasks
 import state
 
 bot = lightbulb.BotApp(
     token=DISCORD_BOT_TOKEN,
-    intents=hikari.Intents.ALL_UNPRIVILEGED | hikari.Intents.MESSAGE_CONTENT
+    intents=hikari.Intents.ALL_UNPRIVILEGED | hikari.Intents.MESSAGE_CONTENT,
+    owner_ids={398152024014716938},
+    default_enabled_guilds=DEFAULT_ENABLED_GUILD_ID
 )
 
 bot.load_extensions_from('./commands')
