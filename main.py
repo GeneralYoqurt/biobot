@@ -15,4 +15,4 @@ bot.load_extensions_from('./commands')
 async def on_started(event):
     asyncio.create_task(youtube_listener(bot))
 
-bot.run()
+bot.run(status=hikari.Status.ONLINE, activity=hikari.Activity(name="Check bio", type=hikari.ActivityType.CUSTOM))
