@@ -2,7 +2,7 @@ import hikari
 import lightbulb
 from config import DISCORD_BOT_TOKEN, DEFAULT_ENABLED_GUILD_ID
 from controllers.youtube_watch import youtube_listener
-from async_tasks import AsyncTasks
+from controllers.async_tasks import AsyncTasks
 import state
 
 bot = lightbulb.BotApp(
