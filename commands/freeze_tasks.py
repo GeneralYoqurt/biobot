@@ -6,10 +6,10 @@ plugin = lightbulb.Plugin("freeze")
 
 @plugin.command
 @lightbulb.add_checks(lightbulb.owner_only)  # tylko właściciel może używać tej komendy
-@lightbulb.command("freeze", "Zamroź zadania bota i ustaw status DND", ephemeral=True)
+@lightbulb.command("freeze", "Zamroź zadania bota i ustaw status DND (NA RAZIE ZAMRAŻA TYLKO TASK YOUTUBE_WATCH)", ephemeral=True)
 @lightbulb.implements(lightbulb.SlashCommand)
 async def freeze_command(ctx: lightbulb.Context) -> None:
-    """Zamraża zadania bota i ustawia status DND."""
+    """Zamraża zadania bota i ustawia status DND. (NA RAZIE ZAMRAŻA TYLKO TASK YOUTUBE_WATCH)"""
     # Zatrzymujemy wszystkie zadania
     if state.async_tasks:
         state.async_tasks.freeze_tasks()
