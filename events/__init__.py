@@ -30,7 +30,7 @@ async def on_member_create(event: hikari.MemberCreateEvent) -> None:
 
 @bot.listen(hikari.MessageCreateEvent)
 async def on_message_create(event: hikari.MessageCreateEvent) -> None:
-    """Event handler for when a message is created."""
+    """Event handler for when a message is created on introduce channel."""
     from views.verification import verification_message, VerificationView
     # Check if the message is in a guild (server)
     if event.is_human and event.channel_id == CHANNEL_INTRODUCE_ID:

@@ -7,6 +7,6 @@ def welcome_message(member, guild, channel) -> str:
         "Ojej! Weryfikacja! Spokojnie, to nic strasznego. Raz dwa i będzie po wszystkim.\n"
         "Masz dwie opcje:\n"
         f"1. Przedstawić się na <#{channel.id}>\n"
-        "2. Założyć ticket i odpowiedzieć na pytania"
+        # TODO: "2. Założyć ticket i odpowiedzieć na pytania"
     )
     return message
