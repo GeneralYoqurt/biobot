@@ -1,0 +1,2 @@
+# TODO
+# Jeżeli brakuje jakiejś nie kluczowej zmiennej (tzn. trzeba kluczowe wczytywać przed startem, a nie kluczowe sprawdzać po starcie, chyba, że będą gdzie indziej przechowywane) w .env to następuję automatyczna konfiguracja na serwerze, gdzie bot pyta się co ustawić.

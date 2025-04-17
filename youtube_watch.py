@@ -31,7 +31,11 @@ def write_last_video(video_id):
     with open(LAST_VIDEO_FILE, 'w', encoding='utf-8') as f:
         f.write(video_id)
 
-async def youtube_listener(bot):
+async def youtube_listener(variables):
+    bot = variables['bot']
+    if not bot:
+        print("Nie można znaleźć zmiennej bot zmiennych przekazywanych do async tasks.")
+        return
     # Stan inicjalny tylko z pliku
     last_video = read_last_video()
     while True:
