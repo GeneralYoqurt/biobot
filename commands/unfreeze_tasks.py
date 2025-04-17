@@ -1,11 +1,12 @@
 import hikari
 import lightbulb
+from config import MODERATOR_ROLE_ID
 import state
 
 plugin = lightbulb.Plugin("unfreeze")
 
 @plugin.command
-@lightbulb.add_checks(lightbulb.owner_only)  # tylko właściciel może używać tej komendy
+@lightbulb.add_checks(lightbulb.has_roles(role1=MODERATOR_ROLE_ID))
 @lightbulb.command("unfreeze", "Odmróż zadania bota i ustaw status na Online", ephemeral=True)
 @lightbulb.implements(lightbulb.SlashCommand)
 async def freeze_command(ctx: lightbulb.Context) -> None:

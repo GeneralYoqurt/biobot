@@ -25,3 +25,5 @@ CHANNEL_INTRODUCE_ID = int(os.getenv("CHANNEL_INTRODUCE_ID"))
 LOGGING_VERIFICATION_CHANNEL_ID = int(os.getenv("LOGGING_VERIFICATION_CHANNEL_ID"))
 # ______________________________________________________________________________________________________________________
 ROLE_VERIFIED_USER = int(os.getenv("ROLE_VERIFIED_USER"))
+# ____________________________________________________________________________________________________________________
+MODERATOR_ROLE_ID = int(os.getenv("MODERATOR_ROLE_ID"))
