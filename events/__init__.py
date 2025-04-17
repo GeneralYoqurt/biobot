@@ -3,7 +3,7 @@ import hikari
 from config import CHANNEL_INTRODUCE_ID, LOGGING_VERIFICATION_CHANNEL_ID, ROLE_VERIFIED_USER
 from state import bot, client
 
-@bot.listen(hikari.MemberUpdateEvent)
+@bot.listen(hikari.MemberCreateEvent)
 async def on_member_create(event: hikari.MemberCreateEvent) -> None:
     """Event handler for when a member joins the server."""
     from views.welcome_message import welcome_message
