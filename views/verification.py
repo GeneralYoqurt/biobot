@@ -48,9 +48,7 @@ class AcceptButton(miru.Button):
 
     async def callback(self, ctx: miru.ViewContext) -> None:
         self.view.answer = self.value
-        for item in self.view.children:  # iterujemy po wszystkich przyciskach w widoku
-            item.disabled = True
-        await ctx.edit_response(components=self.view.build())
+        await ctx.respond(content=f"**Użytkownik został zaakceptowany.**", delete_after=5)
         self.view.stop()
 
 
@@ -61,9 +59,7 @@ class DenyButton(miru.Button):
 
     async def callback(self, ctx: miru.ViewContext) -> None:
         self.view.answer = self.value
-        for item in self.view.children:
-            item.disabled = True
-        await ctx.edit_response(components=self.view.build())
+        await ctx.respond(content=f"**Użytkownik został odrzucony.**", delete_after=5)
         self.view.stop()
 
 
@@ -74,9 +70,7 @@ class DeleteButton(miru.Button):
 
     async def callback(self, ctx: miru.ViewContext) -> None:
         self.view.answer = self.value
-        for item in self.view.children:
-            item.disabled = True
-        await ctx.edit_response(components=self.view.build())
+        await ctx.respond(content=f"**Wiadomość została usunięta.**", delete_after=5)
         self.view.stop()
 
 

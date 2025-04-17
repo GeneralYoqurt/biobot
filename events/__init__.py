@@ -34,7 +34,7 @@ async def on_message_create(event: hikari.MessageCreateEvent) -> None:
     from views.verification import verification_message, VerificationView
     # Check if the message is in a guild (server)
     if event.is_human and event.channel_id == CHANNEL_INTRODUCE_ID:
-        event.message.add_reaction("❤️")
+        await event.message.add_reaction("❤️")
 
         # Get the member who sent the message
         member = event.member
@@ -49,11 +49,11 @@ async def on_message_create(event: hikari.MessageCreateEvent) -> None:
         await view.wait()  # Wait for the view to finish
         if view.answer == "accept":
             await member.add_role(role=ROLE_VERIFIED_USER)
-            await message.edit(content=f"**Użytkownik {member.mention} został zweryfikowany.**", components=[])
+            await message.delete()
         elif view.answer == "deny":
             await member.send(content="Weryfikacja została odrzucona. Spróbuj ponownie.")
             await event.message.delete()
-            await message.edit(content=f"**Użytkownik {member.mention} został odrzucony.**", components=[])
+            await message.delete()
         elif view.answer == "delete":
             await event.message.delete()
-            await message.edit(content=f"**Wiadomość użytkownika {member.mention} została usunięta.**", components=[])
+            await message.delete()
