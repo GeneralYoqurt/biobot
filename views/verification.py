@@ -46,7 +46,7 @@ class DeleteButton(miru.Button):
 
 class VerificationView(miru.View):
     def __init__(self) -> None:
-        super().__init__()
+        super().__init__(timeout=None)  # No timeout for the view
         self.answer: str | None = None
         # Add the buttons to the view in the constructor
         self.add_item(AcceptButton())
