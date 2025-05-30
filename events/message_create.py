@@ -1,0 +1,33 @@
+import hikari
+from config import CHANNEL_INTRODUCE_ID, LOGGING_VERIFICATION_CHANNEL_ID, ROLE_VERIFIED_USER
+from state import bot, client
+
+@bot.listen(hikari.MessageCreateEvent)
+async def on_message_create(event: hikari.MessageCreateEvent) -> None:
+    """Event handler for when a message is created on introduce channel."""
+    from views.verification import verification_message, VerificationView
+    # Check if the message is in a guild (server)
+    if event.is_human and event.channel_id == CHANNEL_INTRODUCE_ID:
+        await event.message.add_reaction("❤️")
+
+        # Get the member who sent the message
+        member = event.member
+        guild = event.get_guild()
+        channel = guild.get_channel(LOGGING_VERIFICATION_CHANNEL_ID)
+        content = event.content
+
+        view = VerificationView()
+        content = verification_message(member=member, guild=guild, channel=channel, content=event)
+        message = await channel.send(content, components=view)
+        client.start_view(view)
+        await view.wait()  # Wait for the view to finish
+        if view.answer == "accept":
+            await member.add_role(role=ROLE_VERIFIED_USER)
+            await message.delete()
+        elif view.answer == "deny":
+            await member.send(content="Weryfikacja została odrzucona. Spróbuj ponownie.")
+            await event.message.delete()
+            await message.delete()
+        elif view.answer == "delete":
+            await event.message.delete()
+            await message.delete()
