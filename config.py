@@ -5,12 +5,12 @@ load_dotenv()
 
 DISCORD_BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 # ______________________________________________________________________________________________________________________
-DB_DRIVER = os.getenv('DRIVER')
-DB_SERVER = os.getenv('SERVER')
-DB_DATABASE = os.getenv('DATABASE')
-DB_USER = os.getenv('USER')
-DB_PASSWORD = os.getenv('PASSWORD')
-DB_PORT = os.getenv('PORT')
+DB_DRIVER = os.getenv('DB_DRIVER')
+DB_SERVER = os.getenv('DB_SERVER')
+DB_DATABASE = os.getenv('DB_DATABASE')
+DB_USER = os.getenv('DB_USER')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+DB_PORT = os.getenv('DB_PORT')
 # ______________________________________________________________________________________________________________________
 YOUTUBE_CHANNEL_ID = os.getenv("YOUTUBE_CHANNEL_ID")
 YOUTUBE_NOTIFY_CHANNEL_ID = os.getenv("YOUTUBE_NOTIFY_CHANNEL_ID")
