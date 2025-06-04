@@ -33,8 +33,9 @@ async def on_member_create(event: hikari.MemberCreateEvent) -> None:
                 # Use display_name which is safer than mention for users with special characters
                 safe_mention = f"<@{member.id}>"  # Direct ID mention is safer than member.mention
                 message = await channel.send(f"Witamy {safe_mention} na serwerze!", user_mentions=True)
-                await message.delete()  # Delete the message after 5 seconds
             except Exception as e:
                 print(f"Błąd przy wysyłaniu wiadomości powitalnej: {e}")
+            finally:
+                await message.delete()  # Delete the message after 5 seconds
     except Exception as e:
         print(f"Główny błąd w event handlerze on_member_create: {e}")
